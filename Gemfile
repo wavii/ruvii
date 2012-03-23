@@ -6,6 +6,10 @@ gemspec
 # MIT License - https://github.com/rspec/rspec/blob/master/License.txt
 gem "rspec"
 
+# Because code coverage is useful for focused sets of features like this!
+# MIT License - https://github.com/colszowka/simplecov/blob/master/LICENSE
+gem "simplecov"
+
 # A generic file system event handler; we use it for tests.
 # MIT License - https://github.com/guard/guard/blob/master/LICENSE
 gem "guard"
