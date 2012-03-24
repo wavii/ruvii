@@ -23,3 +23,13 @@ desc "Run tests with code coverage and open the results"
 task :coverage => :spec_with_coverage do
   `open coverage/index.html`
 end
+
+desc "Boot up an IRB console w/ ruvii preloaded"
+task :console do
+  require "ruvii"
+  require "irb"
+
+  # IRB parses ARGV on start; let's make it think that its in its own environment
+  ARGV.clear
+  IRB.start
+end
