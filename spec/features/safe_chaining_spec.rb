@@ -1,4 +1,4 @@
-require "ruvii/safe_chaining"
+require "ruvii/features/safe_chaining"
 
 describe "Safe chaining with #n" do
 
