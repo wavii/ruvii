@@ -9,3 +9,4 @@
 require "ruvii/version"
 require "ruvii/dependencies"
 require "ruvii/core_ext"
+require "ruvii/safe_chaining"
