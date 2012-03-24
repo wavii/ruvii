@@ -11,7 +11,7 @@ require "ruvii/dependencies"
 #     thing.n.foo.n.bar
 module Ruvii::SafeChaining
 
-  class ChainedNil
+  class ChainedNil < BasicObject
 
     def method_missing(sym, *args, &block)
       # Exceptions are expensive to construct; in this instance, we use respond_to? to avoid raising
@@ -36,6 +36,7 @@ module Ruvii::SafeChaining
     def n
       ChainedNil.new
     end
+
   end
 
 end

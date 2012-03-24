@@ -22,4 +22,8 @@ describe "Safe chaining with #n" do
     nil.n.thing { |c| "hi" }.should == nil
   end
 
+  it "should properly behave like nil" do
+    nil.n.nil?.should == true
+  end
+
 end
