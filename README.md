@@ -12,6 +12,9 @@ We manage nearly all of the dev concerns of ruvii via [guard](https://github.com
 kick off `guard` in the background, and it will take charge of running the tests and reloading them
 whenever anything changes.
 
+Remember: This project includes _only_ features and patterns that we use on a (mostly) daily basis.
+Keep it focused!
+
 ### Code Coverage
 
 For small focused features like this, code coverage is great!  You have two options to get at it:
