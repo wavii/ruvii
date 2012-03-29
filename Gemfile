@@ -24,7 +24,7 @@ gem "guard-spork"
 
 # Guard configuration & hooks for rspec
 # MIT License - https://github.com/guard/guard-rspec/blob/master/LICENSE
-gem "guard-rspec", git: "https://github.com/wavii/guard-rspec", branch: "in_process_drb"
+gem "guard-rspec"
 
 # Growl notification protocol gem - give us fancy warnings when things go awry
 # MIT License - https://github.com/snaka/ruby_gntp/blob/master/lib/ruby_gntp.rb

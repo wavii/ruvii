@@ -12,7 +12,7 @@ guard "spork" do
   watch("lib/ruvii/dependencies.rb") { :rspec }
 end
 
-guard "rspec", version: 2, drb: true do
+guard "rspec", cli: '--drb' do
   watch(%r{^spec/.+_spec\.rb$})
 
   watch("lib/ruvii.rb") { "spec" }
