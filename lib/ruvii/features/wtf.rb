@@ -1,3 +1,4 @@
+# # wtf?
 require "ruvii/dependencies"
 
 module Ruvii::WTF
@@ -17,7 +18,9 @@ module Ruvii::WTF
       file, line = method.source_location
       location   = "#{scope.white file}:#{scope.yellow line.to_s}"
 
+      # Nicely highlighted source.  We want to give a bit of context around the definition.
       source = scope.method_source_lines(file, line).map { |line_num, line_text, is_target|
+        # The specific def line is also called out
         line_text = scope.green(line_text) if is_target
         "  #{scope.white line_num} > #{line_text}"
       }.join("\n")
@@ -36,6 +39,8 @@ module Ruvii::WTF
   class << self
     include Term::ANSIColor
 
+    # Our default mode is to just print out the message; we assume that you're running this from
+    # a terminal (either in IRB, or via a script)
     def emit(message, print)
       message = message.strip_heredoc.strip
 
@@ -44,17 +49,24 @@ module Ruvii::WTF
         puts message
         puts
 
+        # getting a huge string back in IRB is annoying as fawk.
         return nil
       end
 
+      # Alternatively, if you turn of printing you *can* get the string back.  Helpful for scripting
+      # or testing.
       self.uncolored message
     end
 
+    # Creates the pretty form of a method.
     def method_desc(method, obj, sym)
+      # Method#inspect does a pretty good job of this.  Class(Module)#method or Class#method
       base = method.inspect[/^\#<\S+ (.+)\#.+>$/, 1]
+      # However, singletons are a bit goofy and look like #<Class:Class>
       base = $1 if base =~ /^\#<Class:(.+)>$/
 
       if obj.is_a? Module
+        # Rewrite singleton calls so that we have . instead of #
         base = base.gsub('Class(', "#{obj.name}(") if obj.is_a?(Class) && obj.name
 
         "#{base}.#{sym}"
@@ -65,7 +77,7 @@ module Ruvii::WTF
 
     # Attempts to extract useful context around a method definition
     #
-    # Returns an array of tuples: [line_num, line_text, is_target]
+    # Returns an array of tuples: `[line_num, line_text, is_target]`
     #
     # Line num is a string, and padded
     def method_source_lines(file, line_num, context=5)

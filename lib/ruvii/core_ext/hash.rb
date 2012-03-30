@@ -1,3 +1,4 @@
+# # Hash
 require "ruvii/dependencies"
 
 module Ruvii::Hash

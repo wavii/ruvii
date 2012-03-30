@@ -1,6 +1,7 @@
+# # Safe Chaining
 require "ruvii/dependencies"
 
-# Succint "&&" chaining.
+# Succint `&&` chaining.
 #
 # Stop writing code like:
 #
@@ -11,11 +12,14 @@ require "ruvii/dependencies"
 #     thing.n.foo.n.bar
 module Ruvii::SafeChaining
 
+  # ## Implementation
+
+  # This guy is responsible for stubbing out a fake interface for the method in question.
+  #
+  # It's a silent nil!  You Objective-C folk have to be happy about this.
   class ChainedNil < BasicObject
 
     def method_missing(sym, *args, &block)
-      # Exceptions are expensive to construct; in this instance, we use respond_to? to avoid raising
-      # unnecessary ones.
       return nil unless nil.respond_to? sym
 
       nil.send(sym, *args, &block)
@@ -25,6 +29,7 @@ module Ruvii::SafeChaining
 
   module Object
 
+    # Enable the happy case; we just return ourselves, and away you go!
     def n
       self
     end
@@ -33,6 +38,7 @@ module Ruvii::SafeChaining
 
   module NilClass
 
+    # The not-so-happy case.
     def n
       ChainedNil.new
     end
