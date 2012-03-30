@@ -19,5 +19,9 @@ Gem::Specification.new do |gem|
 
   # The crazy-complex support library.  We cherry-pick a few specific features from it.
   # MIT License - https://github.com/rails/rails/blob/master/activesupport/MIT-LICENSE
-  gem.add_runtime_dependency "activesupport", ">= 3.0.0"
+  gem.add_runtime_dependency "activesupport", "~> 3.0"
+
+  # Terminal coloring library.  Everyone loves pretty output
+  # GPLv2 - https://github.com/flori/term-ansicolor
+  gem.add_runtime_dependency "term-ansicolor", "~> 1.0"
 end
