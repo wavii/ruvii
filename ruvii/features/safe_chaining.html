@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><title>ruvii/features/safe_chaining</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="ruvii/features/safe_chaining"><meta name="groc-project-path" content="lib/ruvii/features/safe_chaining.rb"><meta name="groc-github-url" content="https://github.com/wavii/ruvii"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/wavii/ruvii/blob/master/lib/ruvii/features/safe_chaining.rb">lib/ruvii/features/safe_chaining.rb</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="safe-chaining">Safe Chaining</h1></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="nb">require</span> <span class="s2">&quot;ruvii/dependencies&quot;</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Succint <code>&amp;&amp;</code> chaining.</p>
+
+<p>Stop writing code like:</p>
+
+<pre><code>thing &amp;&amp; thing.foo &amp;&amp; thing.foo.bar
+</code></pre>
+
+<p>Instead, chain it:</p>
+
+<pre><code>thing.n.foo.n.bar
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="k">module</span> <span class="nn">Ruvii::SafeChaining</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="implementation">Implementation</h2></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>This guy is responsible for stubbing out a fake interface for the method in question.</p>
+
+<p>It's a silent nil!  You Objective-C folk have to be happy about this.</p></div></div><div class="code"><div class="wrapper">  <span class="k">class</span> <span class="nc">ChainedNil</span> <span class="o">&lt;</span> <span class="no">BasicObject</span>
+
+    <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kp">nil</span> <span class="k">unless</span> <span class="kp">nil</span><span class="o">.</span><span class="n">respond_to?</span> <span class="n">sym</span>
+
+      <span class="kp">nil</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+
+  <span class="k">module</span> <span class="nn">Object</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Enable the happy case; we just return ourselves, and away you go!</p></div></div><div class="code"><div class="wrapper">    <span class="k">def</span> <span class="nf">n</span>
+      <span class="nb">self</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+
+  <span class="k">module</span> <span class="nn">NilClass</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>The not-so-happy case.</p></div></div><div class="code"><div class="wrapper">    <span class="k">def</span> <span class="nf">n</span>
+      <span class="no">ChainedNil</span><span class="o">.</span><span class="n">new</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+
+<span class="k">end</span>
+
+<span class="no">Object</span><span class="o">.</span><span class="n">send</span>   <span class="ss">:include</span><span class="p">,</span> <span class="no">Ruvii</span><span class="o">::</span><span class="no">SafeChaining</span><span class="o">::</span><span class="no">Object</span>
+<span class="no">NilClass</span><span class="o">.</span><span class="n">send</span> <span class="ss">:include</span><span class="p">,</span> <span class="no">Ruvii</span><span class="o">::</span><span class="no">SafeChaining</span><span class="o">::</span><span class="no">NilClass</span></div></div></div></div></body></html>
