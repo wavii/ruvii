@@ -16,7 +16,7 @@ module Ruvii::WTF
 
     if method.source_location
       file, line = method.source_location
-      location   = "#{scope.white file}:#{scope.yellow line.to_s}"
+      location   = "#{scope.green file}:#{scope.yellow line.to_s}"
 
       # Nicely highlighted source.  We want to give a bit of context around the definition.
       source = scope.method_source_lines(file, line).map { |line_num, line_text, is_target|
