@@ -57,10 +57,6 @@ describe "Object#wtf?" do
   it "should describe singleton methods" do
     result = Thing.wtf? :singleton_thing, false
 
-    puts
-    puts result.inspect
-    puts
-
     result.should include("#{__FILE__}:25")
     result.should include("Thing.singleton_thing")
     result.should include("def singleton_thing")
@@ -68,8 +64,6 @@ describe "Object#wtf?" do
 
   it "should describe mixed in singleton methods" do
     result = Thing.wtf? :mixed_in_method, false
-
-    puts result.inspect
 
     result.should include("#{__FILE__}:4")
     result.should include("Thing(SomeModule).mixed_in_method")
