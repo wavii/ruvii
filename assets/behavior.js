@@ -114,6 +114,215 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "singleLineComment": ["#"],
           "name": "Ruby"
         },
+        "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/core_ext.rb",
+        "projectPath": "lib/ruvii/core_ext.rb",
+        "targetPath": "core_ext",
+        "firstHeader": {
+          "type": "heading",
+          "data": {
+            "level": 1,
+            "title": "Core Extensions",
+            "slug": "core-extensions",
+            "isFileHeader": true
+          },
+          "depth": 1
+        },
+        "title": "Core Extensions"
+      },
+      "depth": 1,
+      "outline": [],
+      "children": [
+        {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".rb"],
+              "pygmentsLexer": "ruby",
+              "singleLineComment": ["#"],
+              "name": "Ruby"
+            },
+            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/core_ext/hash.rb",
+            "projectPath": "lib/ruvii/core_ext/hash.rb",
+            "targetPath": "core_ext/hash",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Hash",
+                "slug": "hash",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Hash"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".rb"],
+              "pygmentsLexer": "ruby",
+              "singleLineComment": ["#"],
+              "name": "Ruby"
+            },
+            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/core_ext/module.rb",
+            "projectPath": "lib/ruvii/core_ext/module.rb",
+            "targetPath": "core_ext/module",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Module",
+                "slug": "module",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Module"
+          },
+          "depth": 2,
+          "outline": []
+        }
+      ]
+    }, {
+      "type": "file",
+      "data": {
+        "language": {
+          "nameMatchers": [".rb"],
+          "pygmentsLexer": "ruby",
+          "singleLineComment": ["#"],
+          "name": "Ruby"
+        },
+        "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/dependencies.rb",
+        "projectPath": "lib/ruvii/dependencies.rb",
+        "targetPath": "dependencies",
+        "firstHeader": {
+          "type": "heading",
+          "data": {
+            "level": 1,
+            "title": "External Dependencies",
+            "slug": "external-dependencies",
+            "isFileHeader": true
+          },
+          "depth": 1
+        },
+        "title": "External Dependencies"
+      },
+      "depth": 1,
+      "outline": []
+    }, {
+      "type": "file",
+      "data": {
+        "language": {
+          "nameMatchers": [".rb"],
+          "pygmentsLexer": "ruby",
+          "singleLineComment": ["#"],
+          "name": "Ruby"
+        },
+        "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features.rb",
+        "projectPath": "lib/ruvii/features.rb",
+        "targetPath": "features",
+        "firstHeader": {
+          "type": "heading",
+          "data": {
+            "level": 1,
+            "title": "Specific Features",
+            "slug": "specific-features",
+            "isFileHeader": true
+          },
+          "depth": 1
+        },
+        "title": "Specific Features"
+      },
+      "depth": 1,
+      "outline": [],
+      "children": [
+        {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".rb"],
+              "pygmentsLexer": "ruby",
+              "singleLineComment": ["#"],
+              "name": "Ruby"
+            },
+            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/safe_chaining.rb",
+            "projectPath": "lib/ruvii/features/safe_chaining.rb",
+            "targetPath": "features/safe_chaining",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Safe Chaining",
+                "slug": "safe-chaining",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Implementation",
+                    "slug": "implementation"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Safe Chaining"
+          },
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Implementation",
+                "slug": "implementation"
+              },
+              "depth": 2
+            }
+          ]
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".rb"],
+              "pygmentsLexer": "ruby",
+              "singleLineComment": ["#"],
+              "name": "Ruby"
+            },
+            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/wtf.rb",
+            "projectPath": "lib/ruvii/features/wtf.rb",
+            "targetPath": "features/wtf",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "wtf?",
+                "slug": "wtf",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "wtf?"
+          },
+          "depth": 2,
+          "outline": []
+        }
+      ]
+    }, {
+      "type": "file",
+      "data": {
+        "language": {
+          "nameMatchers": [".rb"],
+          "pygmentsLexer": "ruby",
+          "singleLineComment": ["#"],
+          "name": "Ruby"
+        },
         "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii.rb",
         "projectPath": "lib/ruvii.rb",
         "targetPath": "ruvii",
@@ -130,245 +339,33 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "title": "Features &amp; Behavior"
       },
       "depth": 1,
-      "outline": [],
-      "children": [
-        {
-          "type": "file",
+      "outline": []
+    }, {
+      "type": "file",
+      "data": {
+        "language": {
+          "nameMatchers": [".rb"],
+          "pygmentsLexer": "ruby",
+          "singleLineComment": ["#"],
+          "name": "Ruby"
+        },
+        "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/version.rb",
+        "projectPath": "lib/ruvii/version.rb",
+        "targetPath": "version",
+        "firstHeader": {
+          "type": "heading",
           "data": {
-            "language": {
-              "nameMatchers": [".rb"],
-              "pygmentsLexer": "ruby",
-              "singleLineComment": ["#"],
-              "name": "Ruby"
-            },
-            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/core_ext.rb",
-            "projectPath": "lib/ruvii/core_ext.rb",
-            "targetPath": "ruvii/core_ext",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Core Extensions",
-                "slug": "core-extensions",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "Core Extensions"
+            "level": 1,
+            "title": "Version Information",
+            "slug": "version-information",
+            "isFileHeader": true
           },
-          "depth": 2,
-          "outline": [],
-          "children": [
-            {
-              "type": "file",
-              "data": {
-                "language": {
-                  "nameMatchers": [".rb"],
-                  "pygmentsLexer": "ruby",
-                  "singleLineComment": ["#"],
-                  "name": "Ruby"
-                },
-                "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/core_ext/hash.rb",
-                "projectPath": "lib/ruvii/core_ext/hash.rb",
-                "targetPath": "ruvii/core_ext/hash",
-                "firstHeader": {
-                  "type": "heading",
-                  "data": {
-                    "level": 1,
-                    "title": "Hash",
-                    "slug": "hash",
-                    "isFileHeader": true
-                  },
-                  "depth": 1
-                },
-                "title": "Hash"
-              },
-              "depth": 3,
-              "outline": []
-            }, {
-              "type": "file",
-              "data": {
-                "language": {
-                  "nameMatchers": [".rb"],
-                  "pygmentsLexer": "ruby",
-                  "singleLineComment": ["#"],
-                  "name": "Ruby"
-                },
-                "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/core_ext/module.rb",
-                "projectPath": "lib/ruvii/core_ext/module.rb",
-                "targetPath": "ruvii/core_ext/module",
-                "firstHeader": {
-                  "type": "heading",
-                  "data": {
-                    "level": 1,
-                    "title": "Module",
-                    "slug": "module",
-                    "isFileHeader": true
-                  },
-                  "depth": 1
-                },
-                "title": "Module"
-              },
-              "depth": 3,
-              "outline": []
-            }
-          ]
-        }, {
-          "type": "file",
-          "data": {
-            "language": {
-              "nameMatchers": [".rb"],
-              "pygmentsLexer": "ruby",
-              "singleLineComment": ["#"],
-              "name": "Ruby"
-            },
-            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/dependencies.rb",
-            "projectPath": "lib/ruvii/dependencies.rb",
-            "targetPath": "ruvii/dependencies",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "External Dependencies",
-                "slug": "external-dependencies",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "External Dependencies"
-          },
-          "depth": 2,
-          "outline": []
-        }, {
-          "type": "file",
-          "data": {
-            "language": {
-              "nameMatchers": [".rb"],
-              "pygmentsLexer": "ruby",
-              "singleLineComment": ["#"],
-              "name": "Ruby"
-            },
-            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features.rb",
-            "projectPath": "lib/ruvii/features.rb",
-            "targetPath": "ruvii/features",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Specific Features",
-                "slug": "specific-features",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "Specific Features"
-          },
-          "depth": 2,
-          "outline": [],
-          "children": [
-            {
-              "type": "file",
-              "data": {
-                "language": {
-                  "nameMatchers": [".rb"],
-                  "pygmentsLexer": "ruby",
-                  "singleLineComment": ["#"],
-                  "name": "Ruby"
-                },
-                "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/safe_chaining.rb",
-                "projectPath": "lib/ruvii/features/safe_chaining.rb",
-                "targetPath": "ruvii/features/safe_chaining",
-                "firstHeader": {
-                  "type": "heading",
-                  "data": {
-                    "level": 1,
-                    "title": "Safe Chaining",
-                    "slug": "safe-chaining",
-                    "isFileHeader": true
-                  },
-                  "depth": 1,
-                  "children": [
-                    {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Implementation",
-                        "slug": "implementation"
-                      },
-                      "depth": 2
-                    }
-                  ]
-                },
-                "title": "Safe Chaining"
-              },
-              "depth": 3,
-              "outline": [
-                {
-                  "type": "heading",
-                  "data": {
-                    "level": 2,
-                    "title": "Implementation",
-                    "slug": "implementation"
-                  },
-                  "depth": 2
-                }
-              ]
-            }, {
-              "type": "file",
-              "data": {
-                "language": {
-                  "nameMatchers": [".rb"],
-                  "pygmentsLexer": "ruby",
-                  "singleLineComment": ["#"],
-                  "name": "Ruby"
-                },
-                "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/wtf.rb",
-                "projectPath": "lib/ruvii/features/wtf.rb",
-                "targetPath": "ruvii/features/wtf",
-                "firstHeader": {
-                  "type": "heading",
-                  "data": {
-                    "level": 1,
-                    "title": "wtf?",
-                    "slug": "wtf",
-                    "isFileHeader": true
-                  },
-                  "depth": 1
-                },
-                "title": "wtf?"
-              },
-              "depth": 3,
-              "outline": []
-            }
-          ]
-        }, {
-          "type": "file",
-          "data": {
-            "language": {
-              "nameMatchers": [".rb"],
-              "pygmentsLexer": "ruby",
-              "singleLineComment": ["#"],
-              "name": "Ruby"
-            },
-            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/version.rb",
-            "projectPath": "lib/ruvii/version.rb",
-            "targetPath": "ruvii/version",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Version Information",
-                "slug": "version-information",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "Version Information"
-          },
-          "depth": 2,
-          "outline": []
-        }
-      ]
+          "depth": 1
+        },
+        "title": "Version Information"
+      },
+      "depth": 1,
+      "outline": []
     }
   ];
 
