@@ -1,4 +1,5 @@
 {
   "glob": ["lib/**/*.rb", "README.md"],
+  "strip": ["lib/", "lib/ruvii/"],
   "github": true
 }

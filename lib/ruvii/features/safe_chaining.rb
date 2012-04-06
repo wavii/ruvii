@@ -27,25 +27,29 @@ module Ruvii::SafeChaining
 
   end
 
+  # If you're calling `n` on an actual object, we shouldn't behave any differently.
+  #
+  # Thus, this is the happy case; we just return ourselves, and away you go!
   module Object
 
-    # Enable the happy case; we just return ourselves, and away you go!
     def n
       self
     end
 
   end
 
+  # If you've got a nil object, that's where safe chaining really kicks in.
+  #
+  # We just return a shared instance of `ChainedNil`, which eats all method calls and returns nil.
   module NilClass
 
-    # The not-so-happy case.
     def n
       COMMON_CHAINED_NIL
     end
 
   end
 
-  # One ChainedNil behaves like any other, so let's save some cycles.
+  # One `ChainedNil` behaves like any other, so let's save some cycles.
   COMMON_CHAINED_NIL = ChainedNil.new
 
 end
