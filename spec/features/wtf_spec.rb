@@ -71,7 +71,7 @@ describe "Object#wtf?" do
   end
 
   it "should raise a sane error if a method doesn't ext" do
-    proc { Thing.new.wtf? :not_here, false }.should raise_error(NameError)
+    expect { Thing.new.wtf? :not_here, false }.to raise_error(NameError)
   end
 
 end
