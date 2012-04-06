@@ -40,10 +40,13 @@ module Ruvii::SafeChaining
 
     # The not-so-happy case.
     def n
-      ChainedNil.new
+      COMMON_CHAINED_NIL
     end
 
   end
+
+  # One ChainedNil behaves like any other, so let's save some cycles.
+  COMMON_CHAINED_NIL = ChainedNil.new
 
 end
 
