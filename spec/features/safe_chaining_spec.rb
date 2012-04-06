@@ -26,4 +26,8 @@ describe "Safe chaining with #n" do
     nil.n.nil?.should == true
   end
 
+  it "should not treat false as nil" do
+    expect { false.n.bad_method }.to raise_error
+  end
+
 end
