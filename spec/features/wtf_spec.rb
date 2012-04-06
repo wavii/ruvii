@@ -70,6 +70,12 @@ describe "Object#wtf?" do
     result.should include("def mixed_in_method")
   end
 
+  it "should not freak out if the target method doesn't have ruby source" do
+    result = Time.new.wtf? :utc, false
+
+    result.should == "Time#utc defined at Unknown Location"
+  end
+
   it "should raise a sane error if a method doesn't ext" do
     expect { Thing.new.wtf? :not_here, false }.to raise_error(NameError)
   end
