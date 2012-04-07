@@ -19,7 +19,7 @@ module Ruvii::Hash
     #
     # It also ensures that we always set up the correct key, and other potentially evil things.
     def default(&block)
-      raise "Hash.with_default expects a block" unless block
+      raise "Hash.default expects a block" unless block
 
       Hash.new { |h,k| h[k] = block.call }
     end
