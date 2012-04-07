@@ -18,15 +18,19 @@
       <span class="kp">nil</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
     <span class="k">end</span>
 
-  <span class="k">end</span>
+  <span class="k">end</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>If you're calling <code>n</code> on an actual object, we shouldn't behave any differently.</p>
 
-  <span class="k">module</span> <span class="nn">Object</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Enable the happy case; we just return ourselves, and away you go!</p></div></div><div class="code"><div class="wrapper">    <span class="k">def</span> <span class="nf">n</span>
+<p>Thus, this is the happy case; we just return ourselves, and away you go!</p></div></div><div class="code"><div class="wrapper">  <span class="k">module</span> <span class="nn">Object</span>
+
+    <span class="k">def</span> <span class="nf">n</span>
       <span class="nb">self</span>
     <span class="k">end</span>
 
-  <span class="k">end</span>
+  <span class="k">end</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>If you've got a nil object, that's where safe chaining really kicks in.</p>
 
-  <span class="k">module</span> <span class="nn">NilClass</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>The not-so-happy case.</p></div></div><div class="code"><div class="wrapper">    <span class="k">def</span> <span class="nf">n</span>
+<p>We just return a shared instance of <code>ChainedNil</code>, which eats all method calls and returns nil.</p></div></div><div class="code"><div class="wrapper">  <span class="k">module</span> <span class="nn">NilClass</span>
+
+    <span class="k">def</span> <span class="nf">n</span>
       <span class="no">COMMON_CHAINED_NIL</span>
     <span class="k">end</span>
 
