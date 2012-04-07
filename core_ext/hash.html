@@ -17,7 +17,7 @@
 </code></pre>
 
 <p>It also ensures that we always set up the correct key, and other potentially evil things.</p></div></div><div class="code"><div class="wrapper">    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-      <span class="k">raise</span> <span class="s2">&quot;Hash.with_default expects a block&quot;</span> <span class="k">unless</span> <span class="n">block</span>
+      <span class="k">raise</span> <span class="s2">&quot;Hash.default expects a block&quot;</span> <span class="k">unless</span> <span class="n">block</span>
 
       <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">call</span> <span class="p">}</span>
     <span class="k">end</span>
