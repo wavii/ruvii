@@ -22,7 +22,28 @@ describe Ruvii::LightReference do
 
     str_ref.inspect.should == "String"
     str_ref.new.should == ""
-    str_ref.object_id.should == String.object_id
+  end
+
+  it "should fully identify the class" do
+    arr_ref = described_class.new(Array)
+
+    arr_ref.object_id.should == Array.object_id
+    arr_ref.__id__.should    == Array.__id__
+    arr_ref.name.should      == Array.name
+    arr_ref.inspect.should   == Array.inspect
+    arr_ref.hash.should      == Array.hash
+    arr_ref.should           == Array
+
+    arr_ref.should eql(Array)
+    arr_ref.should === []
+
+    arr_ref.send(:object_id).should == Array.object_id
+
+    arr_ref.is_a?(Class).should        == true
+    arr_ref.kind_of?(Class).should     == true
+    arr_ref.instance_of?(Class).should == true
+
+    arr_ref.singleton_class.should == Array.singleton_class
   end
 
   it "should not freak out if you ask it to wrap Object" do

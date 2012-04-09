@@ -17,6 +17,11 @@ class Ruvii::LightReference < BasicObject
     ::Ruvii::LightReference.resolve(@split_name).send(sym, *args, &block)
   end
 
+  # Fully masquerade as the referenced object
+  def __id__
+    ::Ruvii::LightReference.resolve(@split_name).send(:__id__)
+  end
+
   class << self
 
     def can_resolve?(split_name)
