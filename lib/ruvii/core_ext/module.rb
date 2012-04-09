@@ -9,7 +9,7 @@ module Ruvii::Module
   # also dealing with the `||=` gotcha.
   def memoize(symbol, &block)
     memoizer_name = "#{symbol}_unmemoized"
-    storage_name  = "@_#{symbol}_memoized"
+    storage_name  = "@memoized_#{symbol}"
 
     # As a rule, never use `define_method` because it ends up creating a method w/ the extra weight
     # of an additional closure.  We get away not creating a new closure here by passing the block

@@ -31,6 +31,12 @@ describe "Module#memoized" do
       instance.foo_unmemoized.should == 2
     end
 
+    it "places the memoized value in @memoized_property_name" do
+      instance = klass.new
+      instance.foo
+      instance.instance_variable_get(:@memoized_foo).should == 1
+    end
+
   end
 
   context "on a Module" do
