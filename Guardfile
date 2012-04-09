@@ -3,7 +3,7 @@ guard "bundler" do
   watch(/^.+\.gemspec/)
 end
 
-guard "spork" do
+guard "spork", rspec_port: 2727 do
   watch("Gemfile")
   watch("Gemfile.lock")
   watch(".rspec")              { :rspec }
@@ -12,7 +12,7 @@ guard "spork" do
   watch("lib/ruvii/dependencies.rb") { :rspec }
 end
 
-guard "rspec", cli: '--drb' do
+guard "rspec", cli: '--drb --drb-port 2727' do
   watch(%r{^spec/.+_spec\.rb$})
 
   watch("lib/ruvii.rb") { "spec" }
