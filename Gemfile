@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gemspec
 
+# No gem would be complete without rake tasks.
+# MIT License - http://rake.rubyforge.org/files/MIT-LICENSE.html
+gem "rake"
+
 # Our preferred unit testing library.
 # MIT License - https://github.com/rspec/rspec/blob/master/License.txt
 gem "rspec"
