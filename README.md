@@ -26,6 +26,6 @@ For small focused features like this, code coverage is great!  You have two opti
 
 ## License
 
-rails-dev-tweaks is MIT licensed by Wavii, Inc. http://wavii.com
+Ruvii is MIT licensed by Wavii, Inc. http://wavii.com
 
 See the accompanying file, `MIT-LICENSE`, for the full text.
