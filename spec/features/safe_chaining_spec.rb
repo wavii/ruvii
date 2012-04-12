@@ -22,8 +22,16 @@ describe "Safe chaining with #n" do
     nil.n.thing { |c| "hi" }.should == nil
   end
 
-  it "should be nil?" do
-    nil.n.nil?.should == true
+  it "should behave like nil" do
+    nil.n.inspect.should eql "nil"
+    nil.n.nil?.should eql true
+    nil.n.rationalize.should eql Rational(0)
+    nil.n.to_a.should eql []
+    nil.n.to_c.should eql Complex(0)
+    nil.n.to_f.should eql 0.0
+    nil.n.to_i.should eql 0
+    nil.n.to_r.should eql Rational(0)
+    nil.n.to_s.should eql ""
   end
 
   it "should have a nil id, even w/ whiny nils enabled" do

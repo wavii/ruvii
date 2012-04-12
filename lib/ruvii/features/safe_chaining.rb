@@ -21,6 +21,7 @@ module Ruvii::SafeChaining
 
     def method_missing(sym, *args, &block)
       # Special case returning nil for #id, in case whiny nils are on.  model.n.id, for example.
+      # This is as an alternative to whitelisting specific nil methods.
       return nil if sym == :id
       return nil unless nil.respond_to? sym
 
