@@ -20,6 +20,8 @@ module Ruvii::SafeChaining
   class ChainedNil < BasicObject
 
     def method_missing(sym, *args, &block)
+      # Special case returning nil for #id, in case whiny nils are on.  model.n.id, for example.
+      return nil if sym == :id
       return nil unless nil.respond_to? sym
 
       nil.send(sym, *args, &block)
