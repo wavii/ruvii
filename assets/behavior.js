@@ -248,6 +248,32 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "singleLineComment": ["#"],
               "name": "Ruby"
             },
+            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/light_reference.rb",
+            "projectPath": "lib/ruvii/features/light_reference.rb",
+            "targetPath": "features/light_reference",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Class Reference",
+                "slug": "class-reference",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Class Reference"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".rb"],
+              "pygmentsLexer": "ruby",
+              "singleLineComment": ["#"],
+              "name": "Ruby"
+            },
             "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/safe_chaining.rb",
             "projectPath": "lib/ruvii/features/safe_chaining.rb",
             "targetPath": "features/safe_chaining",

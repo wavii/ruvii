@@ -12,7 +12,8 @@
 
 <p>It's a silent nil!  You Objective-C folk have to be happy about this.</p></div></div><div class="code"><div class="wrapper">  <span class="k">class</span> <span class="nc">ChainedNil</span> <span class="o">&lt;</span> <span class="no">BasicObject</span>
 
-    <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Special case returning nil for #id, in case whiny nils are on.  model.n.id, for example.
+This is as an alternative to whitelisting specific nil methods.</p></div></div><div class="code"><div class="wrapper">      <span class="k">return</span> <span class="kp">nil</span> <span class="k">if</span> <span class="n">sym</span> <span class="o">==</span> <span class="ss">:id</span>
       <span class="k">return</span> <span class="kp">nil</span> <span class="k">unless</span> <span class="kp">nil</span><span class="o">.</span><span class="n">respond_to?</span> <span class="n">sym</span>
 
       <span class="kp">nil</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
