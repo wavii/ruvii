@@ -103,7 +103,7 @@ describe Ruvii::LightReference do
     wrapped_duration = Time.now - start
 
     call_overhead = wrapped_duration / naked_duration
-    call_overhead.should <= 7.5
+    call_overhead.should <= 10.0
   end
 
 end
