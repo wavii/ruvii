@@ -1,4 +1,4 @@
-# # Class Reference
+# # Light Reference
 require "ruvii/dependencies"
 
 class Ruvii::LightReference < BasicObject
