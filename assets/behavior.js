@@ -248,9 +248,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "singleLineComment": ["#"],
               "name": "Ruby"
             },
-            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/light_reference.rb",
-            "projectPath": "lib/ruvii/features/light_reference.rb",
-            "targetPath": "features/light_reference",
+            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/const_reference.rb",
+            "projectPath": "lib/ruvii/features/const_reference.rb",
+            "targetPath": "features/const_reference",
             "firstHeader": {
               "type": "heading",
               "data": {
