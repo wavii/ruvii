@@ -3,13 +3,16 @@ require "ruvii/dependencies"
 
 class Ruvii::ConstReference < BasicObject
 
-  def initialize(const)
-    if const.respond_to?(:name) && const.name
-      @split_name = const.name.to_s.split("::").map(&:to_sym)
+  # Accepts either a constant directly, or its name
+  def initialize(const_or_name)
+    if const_or_name.respond_to?(:name) && const_or_name.name
+      const_or_name = const_or_name.name
     end
 
+    @split_name = const_or_name.to_s.split("::").map(&:to_sym)
+
     unless ::Ruvii::ConstReference.can_resolve? @split_name
-      ::Kernel.raise ::TypeError, "Ruvii::ConstReference can only manage named constants!"
+      ::Kernel.raise ::NameError, "Ruvii::ConstReference can only manage named constants!"
     end
   end
 

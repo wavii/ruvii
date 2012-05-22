@@ -24,6 +24,18 @@ describe Ruvii::ConstReference do
     str_ref.new.should == ""
   end
 
+  it "should support string-like names" do
+    str_ref = described_class.new('String')
+
+    str_ref.inspect.should == 'String'
+    str_ref.new.should == ''
+
+    array_ref = described_class.new(:Array)
+
+    array_ref.inspect.should == 'Array'
+    array_ref.new.should == []
+  end
+
   it "should fully identify the class" do
     arr_ref = described_class.new(Array)
 
@@ -52,11 +64,11 @@ describe Ruvii::ConstReference do
   end
 
   it "should raise when you pass a non-constant" do
-    expect { described_class.new("") }.to raise_error(TypeError)
+    expect { described_class.new("") }.to raise_error(NameError)
   end
 
   it "should raise if you give it an unreferencable constant" do
-    expect { described_class.new(Class.new) }.to raise_error(TypeError)
+    expect { described_class.new(Class.new) }.to raise_error(NameError)
   end
 
   it "should find deeply nested constants" do
