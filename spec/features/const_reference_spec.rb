@@ -1,4 +1,4 @@
-require "ruvii/features/light_reference"
+require "ruvii/features/const_reference"
 
 module A
   module B
@@ -15,7 +15,7 @@ module A
   end
 end
 
-describe Ruvii::LightReference do
+describe Ruvii::ConstReference do
 
   it "should provide a convenient and nearly transparent wrapper to a class" do
     str_ref = described_class.new(String)

@@ -1,25 +1,25 @@
 # # Light Reference
 require "ruvii/dependencies"
 
-class Ruvii::LightReference < BasicObject
+class Ruvii::ConstReference < BasicObject
 
   def initialize(const)
     if const.respond_to?(:name) && const.name
       @split_name = const.name.to_s.split("::").map(&:to_sym)
     end
 
-    unless ::Ruvii::LightReference.can_resolve? @split_name
-      ::Kernel.raise ::TypeError, "Ruvii::LightReference can only manage named constants!"
+    unless ::Ruvii::ConstReference.can_resolve? @split_name
+      ::Kernel.raise ::TypeError, "Ruvii::ConstReference can only manage named constants!"
     end
   end
 
   def method_missing(sym, *args, &block)
-    ::Ruvii::LightReference.resolve(@split_name).send(sym, *args, &block)
+    ::Ruvii::ConstReference.resolve(@split_name).send(sym, *args, &block)
   end
 
   # Fully masquerade as the referenced object
   def __id__
-    ::Ruvii::LightReference.resolve(@split_name).send(:__id__)
+    ::Ruvii::ConstReference.resolve(@split_name).send(:__id__)
   end
 
   class << self
@@ -47,10 +47,10 @@ class Ruvii::LightReference < BasicObject
 
 end
 
-module Ruvii::LightReferenceHelper
+module Ruvii::ConstReferenceHelper
   def const_ref(*args)
-    ::Ruvii::LightReference.new(*args)
+    ::Ruvii::ConstReference.new(*args)
   end
 end
 
-Object.send :include, Ruvii::LightReferenceHelper
+Object.send :include, Ruvii::ConstReferenceHelper
