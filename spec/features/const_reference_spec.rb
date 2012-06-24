@@ -63,12 +63,18 @@ describe Ruvii::ConstReference do
     obj_ref.inspect.should == "Object"
   end
 
-  it "should raise when you pass a non-constant" do
-    expect { described_class.new("") }.to raise_error(NameError)
+  it "should not evaluate the constant until you reference something on it" do
+    described_class.new('Unknown::Constant')
+  end
+
+  it "should do basic validation of the constant name" do
+    expect { described_class.new('') }.to              raise_error(NameError)
+    expect { described_class.new('foo_bar') }.to       raise_error(NameError)
+    expect { described_class.new('Foo::Bar::baz') }.to raise_error(NameError)
   end
 
   it "should raise if you give it an unreferencable constant" do
-    expect { described_class.new(Class.new) }.to raise_error(NameError)
+    expect { described_class.new(Class.new).name }.to raise_error(NameError)
   end
 
   it "should find deeply nested constants" do

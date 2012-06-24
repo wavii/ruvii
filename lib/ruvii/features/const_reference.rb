@@ -1,4 +1,4 @@
-# # Light Reference
+# # Const Reference
 require "ruvii/dependencies"
 
 class Ruvii::ConstReference < BasicObject
@@ -9,11 +9,13 @@ class Ruvii::ConstReference < BasicObject
       const_or_name = const_or_name.name
     end
 
-    @split_name = const_or_name.to_s.split("::").map(&:to_sym)
-
-    unless ::Ruvii::ConstReference.can_resolve? @split_name
-      ::Kernel.raise ::NameError, "Ruvii::ConstReference can only manage named constants!"
+    # Basic validation
+    tokens = const_or_name.to_s.split("::")
+    unless tokens.size > 0 && tokens.all? { |t| /^[A-Z][a-z0-9_]*$/ =~ t }
+      ::Kernel.raise ::NameError, "Ruvii::ConstReference requires validly named constants!  Got #{const_or_name.inspect}"
     end
+
+    @split_name = tokens.map(&:to_sym)
   end
 
   def method_missing(sym, *args, &block)
