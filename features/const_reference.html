@@ -1,35 +1,50 @@
-<!DOCTYPE html><html lang="en"><head><title>features/const_reference</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="features/const_reference"><meta name="groc-project-path" content="lib/ruvii/features/const_reference.rb"><meta name="groc-github-url" content="https://github.com/wavii/ruvii"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/wavii/ruvii/blob/master/lib/ruvii/features/const_reference.rb">lib/ruvii/features/const_reference.rb</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="light-reference">Light Reference</h1></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="nb">require</span> <span class="s2">&quot;ruvii/dependencies&quot;</span>
+<!DOCTYPE html><html lang="en"><head><title>features/const_reference</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="features/const_reference"><meta name="groc-project-path" content="lib/ruvii/features/const_reference.rb"><meta name="groc-github-url" content="https://github.com/wavii/wavii"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/wavii/wavii/blob/master/lib/ruvii/features/const_reference.rb">lib/ruvii/features/const_reference.rb</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="const-reference">Const Reference</h1></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="nb">require</span> <span class="s2">&quot;ruvii/dependencies&quot;</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Frequently when modeling your application, you want to reference your classes
+from each other at compile time (relationships between models, etc).</p>
 
-<span class="k">class</span> <span class="nc">Ruvii</span><span class="o">::</span><span class="no">ConstReference</span> <span class="o">&lt;</span> <span class="no">BasicObject</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Accepts either a constant directly, or its name</p></div></div><div class="code"><div class="wrapper">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">const_or_name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">const_or_name</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">const_or_name</span><span class="o">.</span><span class="n">name</span>
+<p>If you are not careful, this results in an object graph that is mostly
+connected and cumbersome.  (You don't want to load all your models to test
+just one of them, do you?!)</p>
+
+<p>Additionally, if you're in the business of reloading your code (aka rails
+apps, etc), you run the risk of hanging onto stale references of your classes
+<em>before</em> they were reloaded!</p></div></div><div class="code"><div class="wrapper"><span class="k">module</span> <span class="nn">Ruvii::ConstReferenceHelper</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p><code>const_ref</code> tries to alleviate this for you in a mostly transparent way.</p>
+
+<p>Give it a class or a name, and it will return a reference to your target
+constant that you can treat as if it were that constant</p>
+
+<pre><code>const_ref(:MyModel)
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">def</span> <span class="nf">const_ref</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="o">::</span><span class="no">Ruvii</span><span class="o">::</span><span class="no">ConstReference</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>This is similar to <a href="http://www.ruby-doc.org/stdlib/libdoc/weakref/rdoc/index.html"><code>WeakRef</code></a>
+except that it keys off of the name of the constant and not its object id.</p>
+
+<p>You can swap out the constant (reloading it), and <code>const_ref</code> will point at
+the new definition of it.  </p></div></div><div class="code"><div class="wrapper"><span class="k">class</span> <span class="nc">Ruvii</span><span class="o">::</span><span class="no">ConstReference</span> <span class="o">&lt;</span> <span class="no">BasicObject</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="the-guts">The Guts</h2></div></div></div><div class="segment"><div class="code"><div class="wrapper">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">const_or_name</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Accepts either a constant directly, or its name</p></div></div><div class="code"><div class="wrapper">    <span class="k">if</span> <span class="n">const_or_name</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">const_or_name</span><span class="o">.</span><span class="n">name</span>
       <span class="n">const_or_name</span> <span class="o">=</span> <span class="n">const_or_name</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">end</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>We perform as much validation as we can, without actually referencing the
+constant during initialization.  We don't want to force you to pull in
+the object graph at compile time!</p></div></div><div class="code"><div class="wrapper">    <span class="n">tokens</span> <span class="o">=</span> <span class="n">const_or_name</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;::&quot;</span><span class="p">)</span>
+    <span class="k">unless</span> <span class="n">tokens</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">tokens</span><span class="o">.</span><span class="n">all?</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="sr">/^[A-Z][a-z0-9_]*$/</span> <span class="o">=~</span> <span class="n">t</span> <span class="p">}</span>
+      <span class="o">::</span><span class="no">Kernel</span><span class="o">.</span><span class="n">raise</span> <span class="o">::</span><span class="no">NameError</span><span class="p">,</span> <span class="s2">&quot;Ruvii::ConstReference requires validly named constants!  Got </span><span class="si">#{</span><span class="n">const_or_name</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">end</span>
 
-    <span class="vi">@split_name</span> <span class="o">=</span> <span class="n">const_or_name</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;::&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_sym</span><span class="p">)</span>
-
-    <span class="k">unless</span> <span class="o">::</span><span class="no">Ruvii</span><span class="o">::</span><span class="no">ConstReference</span><span class="o">.</span><span class="n">can_resolve?</span> <span class="vi">@split_name</span>
-      <span class="o">::</span><span class="no">Kernel</span><span class="o">.</span><span class="n">raise</span> <span class="o">::</span><span class="no">NameError</span><span class="p">,</span> <span class="s2">&quot;Ruvii::ConstReference can only manage named constants!&quot;</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="vi">@split_name</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_sym</span><span class="p">)</span>
+  <span class="k">end</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>We delegate all methods through to our underlying constant, treat us like we
+are it!</p></div></div><div class="code"><div class="wrapper">  <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
     <span class="o">::</span><span class="no">Ruvii</span><span class="o">::</span><span class="no">ConstReference</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="vi">@split_name</span><span class="p">)</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-  <span class="k">end</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Fully masquerade as the referenced object</p></div></div><div class="code"><div class="wrapper">  <span class="k">def</span> <span class="nf">__id__</span>
-    <span class="o">::</span><span class="no">Ruvii</span><span class="o">::</span><span class="no">ConstReference</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="vi">@split_name</span><span class="p">)</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:__id__</span><span class="p">)</span>
+  <span class="k">end</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>We go a step further and delegate the few methods we got from 
+<a href="http://www.ruby-doc.org/core/BasicObject.html"><code>BasicObject</code></a> as well.</p></div></div><div class="code"><div class="wrapper">  <span class="o">[</span><span class="p">:</span><span class="o">!</span><span class="p">,</span> <span class="p">:</span><span class="o">!=</span><span class="p">,</span> <span class="ss">:==</span><span class="p">,</span> <span class="ss">:__id__</span><span class="p">,</span> <span class="ss">:__send__</span><span class="p">,</span> <span class="ss">:equal?</span><span class="p">,</span> <span class="ss">:instance_eval</span><span class="p">,</span> <span class="ss">:instance_exec</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">sym</span><span class="o">|</span>
+    <span class="nb">class_eval</span> <span class="o">&lt;&lt;-</span><span class="no">end_eval</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">,</span> <span class="bp">__LINE__</span>
+<span class="sh">      def #{sym}(*args, &amp;block)</span>
+<span class="sh">        ::Ruvii::ConstReference.resolve(@split_name).send(:#{sym}, *args, &amp;block)</span>
+<span class="sh">      end</span>
+<span class="no">    end_eval</span>
   <span class="k">end</span>
 
-  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
-
-    <span class="k">def</span> <span class="nf">can_resolve?</span><span class="p">(</span><span class="n">split_name</span><span class="p">)</span>
-      <span class="k">return</span> <span class="kp">false</span> <span class="k">unless</span> <span class="nb">name</span>
-
-      <span class="n">steps</span> <span class="o">=</span> <span class="o">[::</span><span class="no">Object</span><span class="o">]</span>
-      <span class="nb">Array</span><span class="p">(</span><span class="n">split_name</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="n">steps</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">steps</span><span class="o">.</span><span class="n">last</span> <span class="p">?</span> <span class="n">steps</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span> <span class="kp">nil</span><span class="p">)</span> <span class="p">}</span>
-
-      <span class="n">steps</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">steps</span><span class="o">.</span><span class="n">all?</span>
-    <span class="k">end</span>
-
-    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="n">split_name</span><span class="p">)</span>
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>The hard work of resolving a constant unfortunately requires that we
+recurse through the hierarchy; no helpers/direct lookups here. </p></div></div><div class="code"><div class="wrapper">    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="n">split_name</span><span class="p">)</span>
       <span class="n">base</span> <span class="o">=</span> <span class="o">::</span><span class="no">Object</span>
       <span class="n">split_name</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
         <span class="k">break</span> <span class="k">unless</span> <span class="n">base</span>
@@ -41,12 +56,6 @@
 
   <span class="k">end</span>
 
-<span class="k">end</span>
-
-<span class="k">module</span> <span class="nn">Ruvii::ConstReferenceHelper</span>
-  <span class="k">def</span> <span class="nf">const_ref</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-    <span class="o">::</span><span class="no">Ruvii</span><span class="o">::</span><span class="no">ConstReference</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-  <span class="k">end</span>
 <span class="k">end</span>
 
 <span class="no">Object</span><span class="o">.</span><span class="n">send</span> <span class="ss">:include</span><span class="p">,</span> <span class="no">Ruvii</span><span class="o">::</span><span class="no">ConstReferenceHelper</span></div></div></div></div></body></html>

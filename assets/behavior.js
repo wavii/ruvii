@@ -13,7 +13,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "commentsOnly": true,
           "name": "Markdown"
         },
-        "sourcePath": "/Users/ian/Wavii/ruvii/README.md",
+        "sourcePath": "/Users/ian/wavii/ruvii/README.md",
         "projectPath": "README.md",
         "targetPath": "index",
         "firstHeader": {
@@ -114,7 +114,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "singleLineComment": ["#"],
           "name": "Ruby"
         },
-        "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/core_ext.rb",
+        "sourcePath": "/Users/ian/wavii/ruvii/lib/ruvii/core_ext.rb",
         "projectPath": "lib/ruvii/core_ext.rb",
         "targetPath": "core_ext",
         "firstHeader": {
@@ -141,7 +141,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "singleLineComment": ["#"],
               "name": "Ruby"
             },
-            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/core_ext/hash.rb",
+            "sourcePath": "/Users/ian/wavii/ruvii/lib/ruvii/core_ext/hash.rb",
             "projectPath": "lib/ruvii/core_ext/hash.rb",
             "targetPath": "core_ext/hash",
             "firstHeader": {
@@ -167,7 +167,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "singleLineComment": ["#"],
               "name": "Ruby"
             },
-            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/core_ext/module.rb",
+            "sourcePath": "/Users/ian/wavii/ruvii/lib/ruvii/core_ext/module.rb",
             "projectPath": "lib/ruvii/core_ext/module.rb",
             "targetPath": "core_ext/module",
             "firstHeader": {
@@ -195,7 +195,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "singleLineComment": ["#"],
           "name": "Ruby"
         },
-        "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/dependencies.rb",
+        "sourcePath": "/Users/ian/wavii/ruvii/lib/ruvii/dependencies.rb",
         "projectPath": "lib/ruvii/dependencies.rb",
         "targetPath": "dependencies",
         "firstHeader": {
@@ -221,7 +221,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "singleLineComment": ["#"],
           "name": "Ruby"
         },
-        "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features.rb",
+        "sourcePath": "/Users/ian/wavii/ruvii/lib/ruvii/features.rb",
         "projectPath": "lib/ruvii/features.rb",
         "targetPath": "features",
         "firstHeader": {
@@ -248,23 +248,44 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "singleLineComment": ["#"],
               "name": "Ruby"
             },
-            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/const_reference.rb",
+            "sourcePath": "/Users/ian/wavii/ruvii/lib/ruvii/features/const_reference.rb",
             "projectPath": "lib/ruvii/features/const_reference.rb",
             "targetPath": "features/const_reference",
             "firstHeader": {
               "type": "heading",
               "data": {
                 "level": 1,
-                "title": "Light Reference",
-                "slug": "light-reference",
+                "title": "Const Reference",
+                "slug": "const-reference",
                 "isFileHeader": true
               },
-              "depth": 1
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "The Guts",
+                    "slug": "the-guts"
+                  },
+                  "depth": 2
+                }
+              ]
             },
-            "title": "Light Reference"
+            "title": "Const Reference"
           },
           "depth": 2,
-          "outline": []
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "The Guts",
+                "slug": "the-guts"
+              },
+              "depth": 2
+            }
+          ]
         }, {
           "type": "file",
           "data": {
@@ -274,7 +295,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "singleLineComment": ["#"],
               "name": "Ruby"
             },
-            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/safe_chaining.rb",
+            "sourcePath": "/Users/ian/wavii/ruvii/lib/ruvii/features/safe_chaining.rb",
             "projectPath": "lib/ruvii/features/safe_chaining.rb",
             "targetPath": "features/safe_chaining",
             "firstHeader": {
@@ -321,7 +342,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "singleLineComment": ["#"],
               "name": "Ruby"
             },
-            "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/features/wtf.rb",
+            "sourcePath": "/Users/ian/wavii/ruvii/lib/ruvii/features/wtf.rb",
             "projectPath": "lib/ruvii/features/wtf.rb",
             "targetPath": "features/wtf",
             "firstHeader": {
@@ -349,7 +370,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "singleLineComment": ["#"],
           "name": "Ruby"
         },
-        "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii.rb",
+        "sourcePath": "/Users/ian/wavii/ruvii/lib/ruvii.rb",
         "projectPath": "lib/ruvii.rb",
         "targetPath": "ruvii",
         "firstHeader": {
@@ -375,7 +396,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "singleLineComment": ["#"],
           "name": "Ruby"
         },
-        "sourcePath": "/Users/ian/Wavii/ruvii/lib/ruvii/version.rb",
+        "sourcePath": "/Users/ian/wavii/ruvii/lib/ruvii/version.rb",
         "projectPath": "lib/ruvii/version.rb",
         "targetPath": "version",
         "firstHeader": {
