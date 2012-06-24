@@ -46,7 +46,9 @@ describe Ruvii::ConstReference do
     arr_ref.hash.should      == Array.hash
     arr_ref.should           == Array
 
+    arr_ref.should equal(Array)
     arr_ref.should eql(Array)
+    arr_ref.should == Array
     arr_ref.should === []
 
     arr_ref.send(:object_id).should == Array.object_id
@@ -56,6 +58,26 @@ describe Ruvii::ConstReference do
     arr_ref.instance_of?(Class).should == true
 
     arr_ref.singleton_class.should == Array.singleton_class
+  end
+
+  it "should delegate `instance_eval`" do
+    arr_ref = described_class.new(Array)
+    arr_ref.instance_eval { def foo; 'foo'; end }
+
+    Array.foo.should == 'foo'
+
+    arr_ref.instance_eval { undef :foo }
+    expect { Array.foo }.to raise_error(NoMethodError)
+  end
+
+  it "should delegate `instance_exec`" do
+    arr_ref = described_class.new(Array)
+    arr_ref.instance_exec(:x) { |x| def bar; :bar; end; x }.should == :x
+
+    Array.bar.should == :bar
+
+    arr_ref.instance_eval { undef :bar }
+    expect { Array.bar }.to raise_error(NoMethodError)
   end
 
   it "should not freak out if you ask it to wrap Object" do
