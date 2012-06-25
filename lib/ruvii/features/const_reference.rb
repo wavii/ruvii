@@ -61,7 +61,7 @@ class Ruvii::ConstReference < BasicObject
 
   # We go a step further and delegate the few methods we got from 
   # [`BasicObject`](http://www.ruby-doc.org/core/BasicObject.html) as well.
-  [:!, :!=, :==, :__id__, :__send__, :equal?, :instance_eval, :instance_exec].each do |sym|
+  [:!, :!=, :==, :__id__, :equal?, :instance_eval, :instance_exec].each do |sym|
     class_eval <<-end_eval, __FILE__, __LINE__
       def #{sym}(*args, &block)
         ::Ruvii::ConstReference.resolve(@split_name).send(:#{sym}, *args, &block)
