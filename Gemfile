@@ -35,5 +35,5 @@ gem 'guard-rspec'
 gem 'ruby_gntp'
 
 # Don't leave home without a debugger!
-# LGPL - http://rubyforge.org/projects/ruby-debug19/
+# Two Clause BSD License - https://github.com/cldwalker/debugger/blob/master/LICENSE
 gem 'debugger'
